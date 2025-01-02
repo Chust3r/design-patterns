@@ -12,14 +12,25 @@ When to use it
 - When you want to provide a way to create a set of related objects without specifying their concrete types.
 - When you want to ensure that the related objects are created in a consistent manner.
 
-*/
-
-/*
 
 Practical Example: Creating vehicles with factories
 
 Imagine you're designing an application for a factory that produces different types of vehicles (cars, bikes, etc.). 
 You want to ensure that when a certain vehicle type is created, it comes with all its related components (e.g., a specific type of engine or wheels).
+
+Problem:
+
+In a typical scenario where a factory creates vehicles, the concrete classes like `Car` and `Bike` are directly instantiated 
+within the `Factory`. This works when only a limited number of vehicle types exist, but it becomes difficult to extend the system 
+if new vehicle types with specific components (like engines or wheels) are added. For each new type, the `Factory` class needs to be modified, 
+leading to a high level of coupling and reduced maintainability.
+
+Solution:
+
+By applying the Abstract Factory pattern, we can define an interface that handles the creation of vehicle components 
+(including engines) and their assembly in a consistent way. The introduction of `VehicleFactory` and its concrete subclasses 
+(`CarFactory`, `BikeFactory`) allows for the dynamic creation of a vehicle and its related components without modifying 
+the code where the objects are used, thus adhering to the Open/Closed Principle.
 
 */
 
